@@ -1,0 +1,16 @@
+CCA <-c(3988, 4129, 2409, 7779)
+names(CCA) <- c("ionosphere", "pima", "bupa", "German")
+CCB <-c(3273, 3269, 2318, 5166)
+names(CCB) <- c("ionosphere", "pima", "bupa", "German")
+CC <- cbind(CCA, CCB)
+barplot(t(CC), beside = TRUE,legend = c("Serial", "Parallel"),width = c(100, 100), args.legend = list(x = "topleft", cex=2),ylim = c(0, 8000),cex = 2,cex.axis=2)
+
+LCCA <- c(3988, 4129, 2409, 7779)
+LCCB <- c(3273, 3269, 2318, 5166)
+g_range <- range(0, LCCA, LCCB)
+plot(LCCA, type="o", col="blue", ylim=g_range, axes=FALSE, ann=FALSE, cex=1,cex.axis=1)
+axis(1, at=1:4, lab=c("ionosphere", "pima", "bupa", "German"),,cex.axis = 1.6)
+lines(LCCB, type="o", pch=22, lty=2, col="red")
+axis(2, las=2, at=2000*0:4,cex.axis = 1.6)
+box()
+legend(1, g_range[2], c("Serial","Parallel"), cex=1.6,col=c("blue","red"), pch=21:22, lty=1:2);
